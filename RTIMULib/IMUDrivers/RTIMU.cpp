@@ -214,7 +214,7 @@ bool RTIMU::setGyroContinuousLearningAlpha(RTFLOAT alpha)
 void RTIMU::gyroBiasInit()
 {
     m_gyroLearningAlpha = 2.0f / m_sampleRate;
-    m_gyroContinuousAlpha = 0.01f / m_sampleRate;
+    m_gyroContinuousAlpha = 0.0f / m_sampleRate;
     m_gyroSampleCount = 0;
 }
 
@@ -280,7 +280,7 @@ void RTIMU::handleGyroBias()
     deltaAccel -= m_imuData.accel;   // compute difference
     m_previousAccel = m_imuData.accel;
 
-    if ((deltaAccel.length() < RTIMU_FUZZY_ACCEL_ZERO) && (m_imuData.gyro.length() < RTIMU_FUZZY_GYRO_ZERO)) {
+    if ((deltaAccel.length() < RTIMU_FUZZY_ACCEL_ZERO) && (m_imuData.gyro.length() < RTIMU_FUZZY_GYRO_ZERO) && (m_settings->m_gyroBiasValid == false)) {
         // what we are seeing on the gyros should be bias only so learn from this
 
         if (m_gyroSampleCount < (5 * m_sampleRate)) {
