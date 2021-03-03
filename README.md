@@ -18,7 +18,9 @@ The Linux directory contains the main demo apps for embeeded Linux systems:
 * RTIMULibDemo is a simple GUI app that displays the fused IMU data in real-time.
 * RTIMULibDemoGL adds OpenGL visualization to RTIMULibDemo.
 
-RTIMULib is a C++ library but there are also Python bindings in Linux/python. It's easy to build and install the Python RTIMULib library using the provided setup.py after which any Python script will have access to RTIMULib functionality. See Linux/python.README.md (https://github.com/richards-tech/RTIMULib/blob/master/Linux/python/README.md) for more details. Two demo scripts show how to use the Python interface.
+RTIMULib is a C++ library but there are also Python bindings in Linux/python. It's easy to build and install the Python RTIMULib library using the provided setup.py after which any Python script will have access to RTIMULib functionality.
+See [Linux/python.README.md](Linux/python/README.md) for more details.
+Two demo scripts show how to use the Python interface.
 
 Check out www.richards-tech.com for more details, updates and news.
 
