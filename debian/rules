@@ -14,12 +14,11 @@ extra_flags += \
 
 # main packaging script based on dh7 syntax
 %:
-	dh $@ -D Linux --with python2,python3 --parallel
+	dh $@ -D Linux --with python3
 
 override_dh_auto_configure:
 	dh_auto_configure -- $(extra_flags)
 
 override_dh_auto_install:
 	dh_auto_install
-	cd Linux/python && python setup.py install --root=../../debian/python-rtimulib --install-layout=deb
 	cd Linux/python && python3 setup.py install --root=../../debian/python3-rtimulib --install-layout=deb
