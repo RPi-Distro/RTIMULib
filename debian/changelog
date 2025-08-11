@@ -1,3 +1,10 @@
+rtimulib (7.2.1-7) trixie; urgency=medium
+
+  * d/gbp.conf: update debian branch
+  * Add python3-setuptools to Build-Depends
+
+ -- Serge Schneider <serge@raspberrypi.com>  Mon, 11 Aug 2025 14:47:07 +0100
+
 rtimulib (7.2.1-6+bookworm) bookworm; urgency=medium
 
   * Bookworm rebuild
