@@ -1,0 +1,53 @@
+.TH RTIMULibCal 1
+.
+.SH NAME
+RTIMULibCal \- Calibration tool for the Sense HAT IMU
+.
+.
+.SH SYNOPSIS
+.SY RTIMULibCal
+.RI [ filename ]
+.YS
+.
+.
+.SH DESCRIPTION
+.B RTIMULibCal
+is a command line calibration tool for the Raspberry Pi Sense HAT IMU. It has
+no command line options, but does provide an interactive interface through
+which the IMU can be calibrated. It is essential to calibrate the IMU's
+magnetometer (at the very least) or else poor results will be obtained when
+querying the device's orientation (or \(lqpose\(rq).
+.
+.PP
+The calibration data obtained from this tool will be output to \fIfilename\fR
+which defaults to \(lqRTIMULib.ini\(rq if omitted.
+.
+.PP
+When started, a menu will be presented providing options to calibrate the
+magnetometer or the accelerometer within the IMU (or select \(lqx\(rq to exit):
+.
+.IP
+.EX
+Options are:
+
+  m - calibrate magnetometer with min/max
+  e - calibrate magnetometer with ellipsoid (do min/max first)
+  a - calibrate accelerometers
+  x - exit
+.EE
+.
+.PP
+Given that calibration typically requires that the HAT is rotated through
+numerous orientations, it is recommended to perform this on a Raspberry Pi with
+a minimum number of cables attached to it. For instance, you may wish to set up
+WiFi connectivity, and operate the calibration application over an SSH
+connection so that you can remove keyboard and monitor cables from the Pi,
+leaving just the power cable necessary.
+.
+.PP
+Please note that the magnetometer ellipsoid calibration option (\(lqe\(rq)
+requires GNU Octave to be installed. 
+.
+.
+.SH SEE ALSO
+.BR RTIMULibDrive11 (1)
