@@ -35,7 +35,7 @@ ENDIF(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
 ########################################################################
 # Project setup
 ########################################################################
-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.9)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
 PROJECT(RTIMUHOST CXX)
 ENABLE_TESTING()
 
