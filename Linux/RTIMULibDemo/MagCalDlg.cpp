@@ -38,9 +38,7 @@ MagCalDlg::MagCalDlg(QWidget *parent, RTIMUSettings* settings)
     m_cal = new RTIMUMagCal(settings);
     m_newData = false;
 
-    m_fitDirOptions.append("./RTEllipsoidFit/");
-    m_fitDirOptions.append("../RTEllipsoidFit/");
-    m_fitDirOptions.append("../../RTEllipsoidFit/");
+    m_fitDirOptions.append(RTIMUCALDEFS_OCTAVE_PATH);
 
     findFitDir();
 
@@ -121,15 +119,14 @@ void MagCalDlg::onSaveMinMax()
 
 void MagCalDlg::onProcess()
 {
-    m_cal->magCalSaveRaw(qPrintable(m_fitDir));
+    m_cal->magCalSaveRaw(".");
 
     QProcess proc;
 
-    proc.setWorkingDirectory(m_fitDir);
     proc.start(RTIMUCALDEFS_OCTAVE_COMMAND);
     proc.waitForFinished(20000);
     if (proc.exitCode() == 0) {
-        m_cal->magCalSaveCorr(qPrintable(m_fitDir));
+        m_cal->magCalSaveCorr(".");
     } else {
         QMessageBox::warning(this, "Ellipsoid fit error",
             "Failed to execute RTEllipsoidFit.m. Only min/max calibration available",

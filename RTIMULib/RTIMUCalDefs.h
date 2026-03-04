@@ -51,7 +51,8 @@
 #define RTIMUCALDEFS_MAG_RAW_FILE          "magRaw.dta"     // the raw sample file - input to ellispoid fit code
 #define RTIMUCALDEFS_MAG_CORR_FILE         "magCorr.dta"    // the output from the ellipsoid fit code
 
+#define RTIMUCALDEFS_OCTAVE_PATH           "/usr/share/librtimulib-utils/RTEllipsoidFit"
 #define RTIMUCALDEFS_OCTAVE_CODE           "RTEllipsoidFit.m"
-#define RTIMUCALDEFS_OCTAVE_COMMAND        "octave RTEllipsoidFit.m"
+#define RTIMUCALDEFS_OCTAVE_COMMAND        "octave --path " RTIMUCALDEFS_OCTAVE_PATH " " RTIMUCALDEFS_OCTAVE_PATH "/" RTIMUCALDEFS_OCTAVE_CODE
 
 #endif // RTIMUCALDEFS_H
