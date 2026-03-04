@@ -34,7 +34,7 @@
 
 //  where to find the ellipsoid fitting code
 
-#define ELLIPSOID_FIT_DIR               "../RTEllipsoidFit/"
+#define ELLIPSOID_FIT_DIR               RTIMUCALDEFS_OCTAVE_PATH
 
 //  function prototypes
 
@@ -234,7 +234,7 @@ void doMagEllipsoidCal()
             magCal->newEllipsoidData(imuData.compass);
 
             if (magCal->magCalEllipsoidValid()) {
-                magCal->magCalSaveRaw(ELLIPSOID_FIT_DIR);
+                magCal->magCalSaveRaw(".");
                 processEllipsoid();
                 return;
             }
@@ -268,7 +268,6 @@ void processEllipsoid()
     pid = fork();
     if (pid == 0) {
         //  child process
-        chdir(ELLIPSOID_FIT_DIR);
         execl("/bin/sh", "/bin/sh", "-c", RTIMUCALDEFS_OCTAVE_COMMAND, NULL);
         printf("here");
         _exit(EXIT_FAILURE);
@@ -282,7 +281,7 @@ void processEllipsoid()
         } else {
             if (status == 0) {
                 printf("\nEllipsoid fit completed - saving data to file.");
-                magCal->magCalSaveCorr(ELLIPSOID_FIT_DIR);
+                magCal->magCalSaveCorr(".");
             } else {
                 printf("\nEllipsoid fit returned %d - aborting.\n", status);
             }
